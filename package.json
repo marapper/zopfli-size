@@ -1,14 +1,18 @@
 {
-  "name": "gzip-size",
+  "name": "zopfli-size",
   "version": "3.0.0",
   "description": "Get the gzipped size of a string or buffer",
   "license": "MIT",
-  "repository": "sindresorhus/gzip-size",
-  "author": {
+  "repository": "marapper/zopfli-size",
+  "author": [{
     "name": "Sindre Sorhus",
     "email": "sindresorhus@gmail.com",
     "url": "sindresorhus.com"
-  },
+  },{
+    "name": "Sergey Bondar",
+    "email": "msnre@ya.ru"
+  }
+  ],
   "engines": {
     "node": ">=0.12.0"
   },
