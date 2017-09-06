@@ -2,7 +2,7 @@
 var duplexer = require('duplexer');
 var stream = require('stream');
 var zlib = require('zlib');
-var opts = {level: 9};
+var defaultOpts = {level: 9};
 
 module.exports = function (str, cb) {
 	if (!str) {
@@ -20,17 +20,17 @@ module.exports = function (str, cb) {
 	});
 };
 
-module.exports.sync = function (str) {
-	return zlib.gzipSync(str, opts).length;
+module.exports.sync = function (str, opts) {
+	return zlib.gzipSync(str, opts || defaultOpts).length;
 };
 
-module.exports.stream = function () {
+module.exports.stream = function (opts) {
 	var input = new stream.PassThrough();
 	var output = new stream.PassThrough();
 	var wrapper = duplexer(input, output);
 
 	var gzipSize = 0;
-	var gzip = zlib.createGzip(opts)
+	var gzip = zlib.createGzip(opts || defaultOpts)
 		.on('data', function (buf) {
 			gzipSize += buf.length;
 		})

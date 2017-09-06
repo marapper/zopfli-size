@@ -25,6 +25,11 @@ test.cb('sync - match async version', t => {
 	});
 });
 
+test('gzip compression level', t => {
+	t.plan(1);
+	t.true(m.sync(a, {level: 8}) < m.sync(a, {level: 1}));
+});
+
 test.cb('stream', t => {
 	fs.createReadStream('test.js')
 		.pipe(m.stream())
