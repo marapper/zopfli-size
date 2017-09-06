@@ -29,7 +29,8 @@
     "buffer"
   ],
   "dependencies": {
-    "duplexer": "^0.1.1"
+    "duplexer": "^0.1.1",
+    "node-zopfli": "^2.0.2"
   },
   "devDependencies": {
     "ava": "*",

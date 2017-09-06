@@ -1,7 +1,7 @@
 'use strict';
 var duplexer = require('duplexer');
 var stream = require('stream');
-var zlib = require('zlib');
+var zopfli = require('node-zopfli');
 var defaultOpts = {level: 9};
 
 module.exports = function (str, cb) {
@@ -10,7 +10,7 @@ module.exports = function (str, cb) {
 		return;
 	}
 
-	zlib.gzip(str, opts, function (err, data) {
+	zopfli.gzip(str, opts, function (err, data) {
 		if (err) {
 			cb(err, 0);
 			return;
@@ -21,7 +21,7 @@ module.exports = function (str, cb) {
 };
 
 module.exports.sync = function (str, opts) {
-	return zlib.gzipSync(str, opts || defaultOpts).length;
+	return zopfli.gzipSync(str, opts || defaultOpts).length;
 };
 
 module.exports.stream = function (opts) {
@@ -30,7 +30,7 @@ module.exports.stream = function (opts) {
 	var wrapper = duplexer(input, output);
 
 	var gzipSize = 0;
-	var gzip = zlib.createGzip(opts || defaultOpts)
+	var gzip = zopfli.createGzip(opts || defaultOpts)
 		.on('data', function (buf) {
 			gzipSize += buf.length;
 		})
