@@ -10,7 +10,7 @@ module.exports = function (str, cb) {
 		return;
 	}
 
-	zopfli.gzip(str, opts, function (err, data) {
+	zopfli.gzip(new Buffer(str), opts, function (err, data) {
 		if (err) {
 			cb(err, 0);
 			return;
@@ -21,7 +21,7 @@ module.exports = function (str, cb) {
 };
 
 module.exports.sync = function (str, opts) {
-	return zopfli.gzipSync(str, opts || defaultOpts).length;
+	return zopfli.gzipSync(new Buffer(str), opts || defaultOpts).length;
 };
 
 module.exports.stream = function (opts) {
