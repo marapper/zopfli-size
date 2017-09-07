@@ -1,7 +1,7 @@
 {
   "name": "zopfli-size",
-  "version": "3.0.0",
-  "description": "Get the gzipped size of a string or buffer",
+  "version": "3.0.1",
+  "description": "Get the gzipped size (zopfli) of a string or buffer",
   "license": "MIT",
   "repository": "marapper/zopfli-size",
   "author": [
@@ -30,7 +30,7 @@
   "keywords": [
     "app",
     "tool",
-    "zlib",
+    "zopfli",
     "gzip",
     "compressed",
     "size",
